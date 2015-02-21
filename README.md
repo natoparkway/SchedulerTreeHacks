@@ -1,0 +1,2 @@
+# SchedulerTreeHacks
+Stanford Major Scheduler
