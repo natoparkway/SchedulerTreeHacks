@@ -1,5 +1,18 @@
-extends layout
+<header id="title-bar">
+    <h1 id="english-title">Citizenship Test</h1>
+    <h1 id="spanish-title">Examen de Ciudadanía</h1>
+</header>
 
-block content
-  h1= title
-  p Welcome to #{title}
+<div id="main-page">
+    <div class="intro" id="english_intro">
+        <h2>Welcome to the U.S. Citizenship Test Website.</h2>
+        <a href="/english">
+            <button id="choose-english" class="btn btn-lg btn-success main_button" type="button"> English </button>
+        </a>
+        <p>Click above to begin the test.</p>
+    </div>
+</div>
+
+<!-- Libraries -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
+<script type="text/javascript" src="/javascripts/introduction-view.js"></script> 
