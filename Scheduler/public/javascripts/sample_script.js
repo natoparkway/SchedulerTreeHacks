@@ -1,5 +1,5 @@
 $("#btn1").click(function(event) {
-	$.get("/major_info", function(data) {
-		console.log(data);
+	$.get("/courses", function(data) {
+		console.log("Recieved: " + data);
 	})
 });

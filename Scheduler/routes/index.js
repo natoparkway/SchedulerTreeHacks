@@ -13,7 +13,7 @@ router.get('/courses', function(req, res) {
 });
 
 router.get('/major_info', function(req, res) {
-	res.send(req.session.major);
+	res.json(req.session.major);
 });
 
 module.exports = router;
