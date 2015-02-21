@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var session = require('express-session')
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
@@ -10,6 +11,13 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+//So that we can use session
+app.use(session({
+  secret: 'a6s5fd-asdf9918182yuiy',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,9 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.use('/', routes);
 app.use('/users', users);
-
-//Makes public the go to directory when a path is specified?
-app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
