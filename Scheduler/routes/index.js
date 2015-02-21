@@ -4,15 +4,14 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
 	req.session.major = "Computer Science";
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Page1' });
 });
 
 router.get('/courses', function(req, res) {
-	//res.send(req.session.major);
-	res.render('sample', { major: req.session.major});
+	res.render('sample', {title: 'Page2', major: req.session.major});
 });
 
-router.get('/major_info', function(req, res) {
+router.get('/data/major_info', function(req, res) {
 	res.json(req.session.major);
 });
 
