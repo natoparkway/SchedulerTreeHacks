@@ -58,15 +58,16 @@ router.get('/data/classes/:course', function(req, res){
 
 	query.findOne(function(error, myclass){
 		if(error) throw error;
-		
-		console.log(myclass);
+	
 		/* If the class exists */
-		if(myclass){
-			result = myclass;
-
+		if(myclass) {
+			//result = myclass;
+			return;
 		}
 	});
-	res.send({courseData: result});
+
+	//console.log(result);
+	//res.send({data: result});
 });
 
 
