@@ -18,7 +18,7 @@
     </div>
   </div>
 </div>
-
+  
 <div>
 	<div id="enter-class-bar">
 		<h3>What classes have you taken?</h3>
@@ -28,6 +28,24 @@
 		</form>
 	</div>
 </div>
+<div id="requirements-wrapper">
+</div>
+
+<script src="/javascripts/js/handlebars-v2.0.0.js"></script>
+<script type="text/x-handlebars-template" id="requirements-template">
+  <div id="course{{databaseId}}" class="list-group-item">
+    {{ #each requirements }}
+    <button class="btn" type="button" data-toggle="collapse" data-target="#collapse{{requirementId}}" aria-expanded="false" aria-controls="collapse{{requirementId}}"> {{ requirementName }} </button>
+    <div class="collapse" id="#collapse{{requirementId}}">
+      <div class="panel"> 
+        {{ #each classes}}
+        <div class="panel"> {{this}} </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</script>
 
 <div>
 		<button id="go-btn" class="btn btn-lg nxt-btn" type="button">

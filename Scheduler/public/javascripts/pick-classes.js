@@ -1,5 +1,8 @@
 (function(window, document, undefined) {
 
+	var reqTemplate = document.getElementById('requirements-template');
+	var renderRequirements = Handlebars.compile(reqTemplate.innerHTML);
+
 	var classes = [
 		'CS 106A',
 		'CS 106B',
@@ -58,14 +61,14 @@
 			// var index = elem.indexOf(" ");
 			// var subject = elem.substring(0, index);
 			// var code = elem.substring(index + 1);
-			var courseData;
+			// var courseData;
 
-			console.log("Hey");
-			$.get("/data/classes/" + elem, function(response) {
-				console.log("asdf");
-				console.log(response);
-				courseData = response;
-			});
+			// console.log("Hey");
+			// $.get("/data/classes/" + elem, function(response) {
+			// 	console.log("asdf");
+			// 	console.log(response);
+			// 	courseData = response;
+			// });
 
 			courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
 			courseObjects.push(courseObject);
@@ -87,6 +90,11 @@
 		courses_array.push(course);
 	}
 
-
+	$.getJSON("../../data/MajorReqs.json", function(json){
+		console.log(json);
+		var requirementsHTML = renderRequirements(json);
+		var $requirements = $(requirementsHTML);
+		$('#requirements-wrapper').append($requirements);
+	});
 
   })(this, this.document);

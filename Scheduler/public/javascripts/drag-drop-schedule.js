@@ -145,14 +145,23 @@
 		var $target = $(event.target);
 		if ($target.attr("data-toggle")==="popover") {
 			$target.popover('show');
+
 		} else if ($target.hasClass("glyphicon-zoom-in")) {
+
 			var $popover = $target.parent();
 			$popover.popover('show');
-		} else {
+
+		} else if (!$target.attr('id') === "plan-btn") {
 			$('[data-toggle="popover"]').popover('hide');
+
+		} else {
+			//PIPE TO KENNY'S FUNCTION
 		}
-		console.log("Clicked");
 	});
+
+	// $("#plan-btn").click(function(event) {
+		
+	// });
 
 $( "#autumn, #winter" ).sortable({
 	connectWith: ".connectedSortable"
