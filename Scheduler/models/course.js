@@ -7,7 +7,7 @@ var courseSchema = mongoose.Schema({
 	title: String, //PRINCIPLES OF COMPUTER SYSTEMS
 	description: String, 
 	terms: [String], //["autumn", "winter", "spring"]
-	times: [String] //array of all times
+	times: [String], //array of all times
 	units: [Number]
 });
 

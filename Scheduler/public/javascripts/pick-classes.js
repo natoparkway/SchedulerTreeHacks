@@ -58,14 +58,14 @@
 			// var index = elem.indexOf(" ");
 			// var subject = elem.substring(0, index);
 			// var code = elem.substring(index + 1);
-			var courseData;
+			// var courseData;
 
-			console.log("Hey");
-			$.get("/data/classes/" + elem, function(response) {
-				console.log("asdf");
-				console.log(response);
-				courseData = response;
-			});
+			// console.log("Hey");
+			// $.get("/data/classes/" + elem, function(response) {
+			// 	console.log("asdf");
+			// 	console.log(response);
+			// 	courseData = response;
+			// });
 
 			courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
 			courseObjects.push(courseObject);
