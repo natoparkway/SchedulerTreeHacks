@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/courses/:major', function(req, res) {
-	res.render('sample', {title: 'Page2', major: req.params.major});
+	res.render('old-classes-input', {title: 'Page2', major: req.params.major});
 });
 
 router.get('/data/major_info', function(req, res) {
