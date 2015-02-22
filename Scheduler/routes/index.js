@@ -34,8 +34,8 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Page1' });
 });
 
-router.get('/courses/:major', function(req, res) {
-	res.render('pick-classes-view', {title: 'Page2', major: req.params.major});
+router.get('/courses', function(req, res) {
+	res.render('pick-classes-view', {title: 'Page2'});
 });
 
 router.get('/schedule', function(req, res) {

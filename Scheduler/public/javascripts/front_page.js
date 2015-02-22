@@ -24,7 +24,7 @@ SearchBar.setUp($search, $suggestions, majors);
 
 //If we click the next button, move to next screen
 $(".nxt-btn").click(function(event) {
-  window.location.href = "/courses/" + $("#search-major").val();
+  window.location.href = "/courses";// + $("#search-major").val();
 });
 
 

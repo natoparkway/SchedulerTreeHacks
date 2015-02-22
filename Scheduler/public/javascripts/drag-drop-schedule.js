@@ -54,10 +54,8 @@
 			var equalityIndex = items[index].indexOf("=");
 			var thisKey = items[index].substr(0, equalityIndex);
 			var thisVal = items[index].substr(equalityIndex+1);
-			console.log(thisKey);
 			if (thisKey === key) result = decodeURIComponent(thisVal);
 		}
-		console.log(result);
 		return result;
 	}
 
@@ -68,7 +66,6 @@
 		});
 	}	
 	function renderFromUrl() {
-		console.log("Rendering...");
 		var encodedCourses = parseFromUrl("courses");
 
 		// Demo fallback if the URL has no courses encoded
