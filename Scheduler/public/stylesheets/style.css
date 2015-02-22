@@ -26,3 +26,13 @@ h1 {
 	color: #B81D18;
 	background-color: #4B4D52;
 }
+
+#unscheduled-course-list {
+	float: left;
+
+	/* CSS Hack by DHTMLGoodies */
+	width: 180px; /* IE 5.x */
+	width/* */:/**?160px; /*other browsers */
+	width:/**/160px;
+
+}
