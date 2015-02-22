@@ -55,23 +55,19 @@
 
 	var courseObjects = [];
 	function addCourse(course, courses){
+		course.quarter = "unscheduled-bucket";
 		// courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
 		courseObjects.push(course);
 		if (courseObjects.length === courses.length) {
 			window.localStorage.setItem('courses', JSON.stringify(courseObjects));
 	  		window.location.href = '/schedule';
 		}
-
 	}
 
 	function processCoursesAndSend(courses) {
 		var index = 0;
 		courses.forEach(function(elem) {
-
-			console.log("Hey");
 			$.get("/data/classes/" + elem, function(response) {
-				console.log("asdf");
-				console.log(response);
 				addCourse(response, courses);
 			});
 		});

@@ -78,7 +78,7 @@
 <div>
 <script src="/javascripts/js/handlebars-v2.0.0.js"></script>
 <script type="text/x-handlebars-template" id="draggable-class-template">
-	<div id="course{{databaseId}}" class="list-group-item">
+	<div id="course{{_id}}" class="list-group-item">
 		{{subject}} {{code}}
 		<a href="#" class="remove">&#215;</a>
 		<a tabindex="0" class="examine" role="button"  data-toggle="popover" title="{{subject}} {{code}}: {{title}}" data-content="{{units}} units, {{terms}} \n {{description}}"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>

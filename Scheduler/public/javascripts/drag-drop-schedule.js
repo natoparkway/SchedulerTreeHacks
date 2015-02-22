@@ -17,7 +17,7 @@
 		courses.push(course);
 		// $courses.push($course);
 
-		if (!course.quarter) {
+		if (course.quarter==="unscheduled-bucket") {
 			$('#unscheduled-bucket').append($course);
 		} else {
 			var divId = '#' + course.quarter;
@@ -100,15 +100,11 @@
 		renderFromLocalStorage();
 	}
 
-
-	function matchId(element, index, array) {
-		return (selectedId === element.databaseId);
-	}
-
 	function getCourseIndex($course) {
 		var selectedId = $course.attr("id"); // eg course97
-		var databaseId = parseInt(selectedId.substr(6)); // eg 97
-		var idArray = courses.map(function(x) {return x.databaseId});
+		var databaseId = selectedId.substr(6); // eg 97
+		console.log(databaseId);
+		var idArray = courses.map(function(x) {return x._id});
 		return idArray.indexOf(databaseId);
 	}
 
@@ -153,8 +149,6 @@
 
 		} else if ($target.attr('id') !== "plan-btn") {
 			$('[data-toggle="popover"]').popover('hide');
-			console.log('clicked');
-
 		} else {
 			//PIPE TO KENNY'S FUNCTION
 		}
