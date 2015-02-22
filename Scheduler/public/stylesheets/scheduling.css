@@ -21,6 +21,12 @@
 	padding-bottom: 15px;
 }
 
+.examine {
+	float: right;
+	font-weight: bold;
+	text-decoration: none;
+	color: #444;
+}
 .remove {
 	float: right;
 	font-weight: bold;
