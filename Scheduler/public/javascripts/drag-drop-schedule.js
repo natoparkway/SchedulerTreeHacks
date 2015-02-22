@@ -1,16 +1,22 @@
 (function(window, document, undefined) {
 	var SCHEDULE_DATA_URL = '/data/schedule';
 	var STATUS_OK = 200;
+	// var $courses = [];
 	var courses = [];
+
+	var selectedId = false;
 
 	var courseTemplate = document.getElementById('draggable-class-template');
 	var renderCourse = Handlebars.compile(courseTemplate.innerHTML);
 
-
-	var renderPost = function(course) {
-		courses.add(course);
+	var renderAndPlaceCourse = function(course) {
+		
 		var courseHTML = renderCourse(course);
 		var $course = $(courseHTML);
+
+		courses.push(course);
+		// $courses.push($course);
+
 		if (!course.quarter) {
 			$('#unscheduled-bucket').append($course);
 		} else {
@@ -19,13 +25,15 @@
 		}
 		$('.remove').click(function(event){
 			event.preventDefault();
-			console.log("clikc");
 			var $course = $(this).parent();
 			$course.remove();
+
+			setQuarter($course, false);
+
 			$('#unscheduled-bucket').append($course);
 		});
 	}
-
+	
 	var loadAll = function(callback) {
 		var request = new XMLHttpRequest();
 		request.addEventListener('load', function() {
@@ -40,15 +48,86 @@
 		request.send();
 	}
 
-	loadAll(function(error, courseSchedule) {
-		if (error) {
-			throw error;
-		} else {
-			courseSchedule.data.forEach(function(course) {
-				renderPost(course);
-			});
+	function parseFromUrl(key) {
+		var result = false, tmp = [];
+		var items = location.search.substr(1).split("&");
+		for (var index = 0; index<items.length; index++) {
+			var equalityIndex = items[index].indexOf("=");
+			var thisKey = items[index].substr(0, equalityIndex);
+			var thisVal = items[index].substr(equalityIndex+1);
+			console.log(thisKey);
+			if (thisKey === key) result = decodeURIComponent(thisVal);
 		}
-	});
+		console.log(result);
+		return result;
+	}
+
+	function renderFromJSON(json) {
+		var courseChoices = JSON.parse(json);
+		courseChoices.data.forEach(function(course) {
+			renderAndPlaceCourse(course);
+		});
+	}	
+	function renderFromUrl() {
+		console.log("Rendering...");
+		var encodedCourses = parseFromUrl("courses");
+
+		// Demo fallback if the URL has no courses encoded
+		if (!encodedCourses) {
+			loadAll(function(error, courseSchedule) {
+				if (error) {
+					throw error;
+				} else {
+					courseSchedule.data.forEach(function(course) {
+						renderAndPlaceCourse(course);
+					});
+				}
+			});
+		} else {
+			var coursesJSON = atob(encodedCourses);
+			renderFromJSON(coursesJSON);
+		}
+	}
+
+	function renderFromLocalStorage() {
+		var coursesJSON = window.localStorage.getItem('courses');
+		renderFromJSON(coursesJSON);
+	}
+
+
+	if (window.localStorage.getItem('courses') === null)
+		renderFromUrl();
+	else
+		renderFromLocalStorage();
+
+	// window.localStorage.setItem('derp', 3);
+	console.log(window.localStorage.getItem('derpa'));
+
+
+	function matchId(element, index, array) {
+		return (selectedId === element.databaseId);
+	}
+
+	function getCourseIndex($course) {
+		var selectedId = $course.attr("id"); // eg course97
+		var databaseId = selectedId.substr(6); // eg 97
+		var idArray = courses.map(function(x) {return x.databaseId});
+		
+		console.log(parseInt(databaseId));
+		console.log(idArray);
+		console.log("This should not result in -1:");
+		console.log(idArray.indexOf(databaseId));
+
+		return idArray.indexOf(databaseId);
+	}
+
+	function setQuarter($course, quarter) {
+		var index = getCourseIndex($course);
+
+		console.log("index: "+ index);
+		if (index !== -1)
+			courses[index].quarter = quarter;
+	}
 
 	$(function () {
 		$('[data-toggle="popover"]').popover({
@@ -60,9 +139,8 @@
 			connectWith: ".connectedSortable",
 			items: "div:not(.drag-disabled)",
 			receive: function(event, ui) {
-				var quarter = event.target.id;
-				ui.item
-
+				var quarter = event.target.id; // TEST THIS
+				setQuarter($(ui.item), quarter);
 			}
 		}).disableSelection();
 	});
@@ -72,3 +150,10 @@ $( "#autumn, #winter" ).sortable({
 }).disableSelection();
 
 })(this, this.document);
+
+/*
+ * Matt To Do's:
+ * Saving to localStorage
+ * Integrate with Kenny's algorithm
+ * Call from database
+ */
