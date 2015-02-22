@@ -21,12 +21,8 @@ router.post('/data/schedule', function(req, res){
 	test = req.body.schedule;
 });
 
-router.get('/data/schedule/:data', function(req, res) {
+router.get('/data/schedule/', function(req, res) {
 	res.send({data:test});
-	// var data = req.params.data;
-
-	// res.send({data: decodeddata});
-
 });
 
 /* GET home page. */

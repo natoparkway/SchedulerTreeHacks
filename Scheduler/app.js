@@ -6,6 +6,8 @@ var session = require('express-session')
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://heroku_app34231252:us8a0v9rfimavt7k2fqji9oouu@ds047571.mongolab.com:47571/heroku_app34231252');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
