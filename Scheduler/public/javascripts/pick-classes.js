@@ -60,6 +60,7 @@
 			// var code = elem.substring(index + 1);
 			var courseData;
 
+			console.log("Hey");
 			$.get("/data/classes/" + elem, function(response) {
 				console.log("asdf");
 				console.log(response);
