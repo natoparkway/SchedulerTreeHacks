@@ -1,72 +1,30 @@
-var quarterArr = [];
-//freshman
-quarterArr[0] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[1] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[2] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
 
-//sophomore
-/*
-quarterArr[3] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[4] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[5] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
 
-//junior
-quarterArr[6] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[7] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};
-quarterArr[8] =  {maxUnits: 20, availableUnits: 20, classes: new Array()};*/
+/* ******************************************SCHEDULING ALGORITHM******************************************************/
+exports.scheduleAllClasses = function(quarters, classes){
+    formatClasses(classes);
 
-var classArr = [];
+    // order the classes in a way that prerequisites always come before other classes
+    // (but still try to preserve original order)
+    classes = orderClasses(classes);
 
-classArr[0] = {subject: "CS", code: "106B", terms: ["autumn"], units: [6],  times: ["MWF 11:00:00 AM 2:00:00 PM"]};
-classArr[1] = {subject: "CS", code: "106A", terms: ["autumn"], units: [5],  times: ["MWF 11:30:00 AM 12:50:00 PM"]};
-classArr[2] = {subject: "CS", code: "107", terms: ["autumn"], units: [5], times: ["TR 1:00:00 PM 3:00:00 PM"]};
-/*
-classArr[3] = {titleCode: "math53", terms: [1,2], units: 3, preqs: ["math51", "math52"]};
-classArr[4] = {titleCode: "math52", terms: [1], units: 5, preqs: ["math51"]};
-classArr[5] = {titleCode: "math51", terms: [0,1,2], units: 5, preqs: ["math41", "math42"]};
+    //reformatts the times field to an array (from string)
+    reformatTime(classes);
 
-classArr[6] = {titleCode: "math41", terms: [1], units: 5, preqs: []};
-classArr[7] = {titleCode: "math42", terms: [0,1,2], units: 5, preqs: ["math41"]};
+    var schedules = []; // the first ten schedules we find probably the best, 
+                        // since the user preordered classes in a general way
 
-classArr[8] = {titleCode: "physics43", terms: [1,2], units: 3, preqs: ["physics41"]};
-classArr[9] = {titleCode: "physics41", terms: [1], units: 5, preqs: []};
-classArr[10] = {titleCode: "physics45", terms: [0,1,2], units: 5, preqs: ["physics41", "physics43"]};
+    scheduleClasses(quarters, classes, schedules);
 
-classArr[11] = {titleCode: "cs109", terms: [0,2], units: 3, preqs: ["cs103"]};
-classArr[12] = {titleCode: "cs103", terms: [0,1,2], units: 5, preqs: []};
-classArr[13] = {titleCode: "cs161", terms: [0,2], units: 5, preqs: ["cs103", "cs109"]};
+    //arrange the schedules in terms of score
+    schedules.sort(function(a, b){
+        return score(a) - score(b); //TODO: factor in their initial positions into the score
+    });
 
-classArr[14] = {titleCode: "cs140", terms: [1], units: 3, preqs: ["cs110"]};
-classArr[15] = {titleCode: "cs143", terms: [2], units: 5, preqs: ["cs103"]};
-classArr[16] = {titleCode: "cs110", terms: [1,2], units: 5, preqs: ["cs107"]};
-*/
-           
-var winnerArr = scheduleAllClasses(quarterArr, classArr);
-console.log("--------------------------------------------");
-if(winnerArr.length == 0)
-    console.log("Impossible to schedule all classes");
-
-// for each array of quarters in winnerArr
-for(var w = 0; w < winnerArr.length; w++){
-
-    //for each quarter in the array
-    for(var i = 0; i < winnerArr[w].length; i++){
-        //for each class in each quarter
-        for(var j = 0; j < winnerArr[w][i].classes.length; j++){
-            winnerArr[w][i].classes[j] = winnerArr[w][i].classes[j].titleCode;
-        }
-    }
-
-    console.log(winnerArr[w]);
-    console.log();
+    return schedules;
 }
 
 
-function printClasses(classes){
-    for(var i = 0; i < classes.length; i++){
-        console.log(classes[i].titleCode);
-    }
-}
 
 /* ****************************************SCHEMA CONSISTENCY***************************/
 function formatClasses(classes){
@@ -92,31 +50,6 @@ function formatClasses(classes){
         //add preq field
         classes[i].preqs = [];
     }
-}
-
-
-/* ******************************************SCHEDULING ALGORITHM******************************************************/
-function scheduleAllClasses(quarters, classes){
-    formatClasses(classes);
-
-    // order the classes in a way that prerequisites always come before other classes
-    // (but still try to preserve original order)
-    classes = orderClasses(classes);
-
-    //reformatts the times field to an array (from string)
-    reformatTime(classes);
-
-    var schedules = []; // the first ten schedules we find probably the best, 
-                        // since the user preordered classes in a general way
-
-    scheduleClasses(quarters, classes, schedules);
-
-    //arrange the schedules in terms of score
-    schedules.sort(function(a, b){
-        return score(a) - score(b); //TODO: factor in their initial positions into the score
-    });
-
-    return schedules;
 }
 
 /* *************************************PREPROCESSING STEP (ORDERING OF PREQS)*********************/

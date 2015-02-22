@@ -8,6 +8,7 @@ var courseSchema = mongoose.Schema({
 	description: String, 
 	terms: [String], //["autumn", "winter", "spring"]
 	times: [String] //array of all times
+	units: [Number]
 });
 
 //Make Model
