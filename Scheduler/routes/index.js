@@ -60,19 +60,19 @@ router.get('/data/classes/:course', function(req, res){
 	var subject = req.params.course.substring(0, index);
 	var code = req.params.course.substring(index + 1);
 
+	console.log("Subject: " + subject);
 	var result;
 	var query = Entry.where({'subject': subject, 'code': code});
 
 	query.findOne(function(error, myclass){
-		if(error) throw error;
+		if(error) res.send(error);
 	
 		/* If the class exists */
 		if(myclass) {
-			res.write({data: myclass});
-			return;
+			console.log("Myclass: " + myclass);
+			res.json(myclass);
 		}
 	});
-	res.end();
 });
 
 
