@@ -1,0 +1,89 @@
+{
+	"requirementName": "Math Requirement 1",
+	"classes": ["Math41"]
+}
+{
+	"requirementName": "Math Requirement 2",
+	"classes":["Math42"]
+}
+{
+	"requirementName": "Math Elective 1",
+	"classes": ["Math51","Math52","Math53","Math104","Math108","Math109","Math110","Math113","CS157","CS205A","PHIL151","CME100","CME102","CME104","PHIL151"]
+}
+{
+	"requirementName": "Math Elective 2",
+	"classes": ["Math51","Math52","Math53","Math104","Math108","Math109","Math110","Math113","CS157","CS205A","PHIL151","CME100","CME102","CME104","PHIL151"]
+}
+{
+	"requirementName": "Math Requirement 3",
+	"classes": ["CS103"]
+}
+{
+	"requirementName": "Math Requirement 4",
+	"classes": ["CS109"]
+}
+
+{
+	"requirementName": "Science Requirement 1",
+	"classes": ["PHYSICS21","PHYSICS41","PHYSICS61"]
+}
+{
+	"requirementName": "Science Requirement 2",
+	"classes": ["PHYSICS23","PHYSICS43","PHYSICS63"]
+}
+{
+	"requirementName": "Science Elective",
+	"classes": ["BIO41","BIO42","BIO43","BIO44X","BIO44Y","CEE63","CEE64","CEE70","CHEM31A","CHEM31B","CHEM31X","CHEM33","CHEM35","CHEM36","CHEM131","CHEM135","EARTHSYS10","EARTHSYS30","ENGR31","GES1A","GES1B","GES1C","PHYSICS25","PHYSICS45","PHYSICS65"]
+}
+{
+	"requirementName": "Technology in Society",
+	"classes": ["BIOE131","CLASSICS151","COMM120W","CS181","CS181W","ECON116","ENGR130","ENGR131","ENGR145","MS&E181","MS&E197","STS1"]
+}
+{
+	"requirementName": "Engineering Fundementals 1",
+	"classes": ["CS106B", "CS106X"]
+}
+{
+	"requirementName": "Engineering Fundementals 2",
+	"classes": ["ENGR40", "ENGR40A", "ENGR40M"]
+}
+{
+	"requirementName": "Engineering Fundementals Elective",
+	"classes": ["ENGR10","ENGR14","ENGR14S","ENGR15","ENGR20","ENGR25B","ENGR25E","ENGR30","ENGR40","ENGR50","ENGR50E","ENGR50M","ENGR60","ENGR62","ENGR70A","ENGR70B","ENGR70X","ENGR80","ENGR102E","ENGR102M","ENGR120","ENGR205","ENGR206","ENGR207A","ENGR207B","ENGR207C","ENGR209A"]
+}
+{
+	"requirementName": "Writing in the Major",
+	"classes": ["CS181W", "CS191W", "CS194W", "CS210B", "CS294W"]
+}
+{
+	"requirementName": "Core 1",
+	"classes": ["CS107"]
+}
+{
+	"requirementName": "Core 2",
+	"classes": ["CS110"]
+}
+{
+	"requirementName": "Core 3",
+	"classes": ["CS161"]
+}
+{
+	"requirementName": "Track 1",
+	"classes": ["CS124"]
+}
+{
+	"requirementName": "Track 2",
+	"classes": ["CS145"]
+}
+{
+	"requirementName": "Track 3",
+	"classes": ["CS205A", "CME104", "CME108", "Math52", "Math113"]
+}
+{
+	"requirementName": "Track 4",
+	"classes": ["CS 164", "CS178", "CS205B", "CS131A", "CS231A", "CS268", "CS348A", "CS348B", "CS448"]
+}
+{
+	"requirementName": "Track Elective",
+	"classes":["ARTSTUDI160","ARTSTUDI170","ARTSTUDI179","CME302","CME306","EE262","EE264","EE278","EE368","ME101","PSYCH30","PSYCH221","CS108","CS121","CS124","CS131","CS140","CS142","CS143","CS144","CS145","CS147","CS148","CS149","CS154","CS155","CS156","CS157","CS164","CS166","CS167","CS205A","CS205B","CS210A","CS222","CS223A","CS224M","CS224N","CS224S","CS224U","CS224W","CS225A","CS225B","CS226","CS227","CS227B","CS228","CS228T","CS229","CS229A","CS229T","CS231A","CS240","CS240H","CS241","CS242","CS243","CS244","CS245","CS246","CS247","CS248","CS249A","CS249B","CS254","CS255","CS258","CS261","CS262","CS263","CS265","CS267","CS270","CS271","CS272","CS173","CS274","CS276","CS277","CS295","CME108","EE108B","EE282","CS279","EE180","EE364A","CS348B","CS168","CS190","CS264","CS266"]
+}
