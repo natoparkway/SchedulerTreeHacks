@@ -252,12 +252,13 @@ function score(quarters){
 /* Turn the time field to an array in every class */
 function reformatTime(classes){
     for(var i = 0; i < classes.length; i++){
-        classes[i].time = reformatStr(classes[i].time);
+        classes[i].time = reformat(classes[i].time);
     }
 }
 
-function reformatStr(time_str){
-    var arr = time_str.split(" "); //array in the form: [days startTime meridian endTime meridian]
+function reformat(time){
+    //TODO: extend to look at all times, not just the first
+    var arr = time[0].split(" "); //arr is in the form: [days startTime meridian endTime meridian]
 
     /* Calculate the start and end times as integers */
     var start = calcTime(arr[1], arr[2]);

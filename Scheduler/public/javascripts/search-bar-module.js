@@ -15,7 +15,7 @@
 	  		event.preventDefault();
         if(callback && $search.val() !== '') {
           callback($search.val(), courses);
-          $search.html('');
+          $search.val('');
         }
 	  		return;
 	  	}
