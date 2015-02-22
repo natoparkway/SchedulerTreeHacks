@@ -1,8 +1,5 @@
 (function(window, document, undefined) {
 
-var result = DBQuery.getClass("CS", "106A");
-console.log(result);
-
 var majors = [
 'Computer Science',
 'HumBio',
@@ -27,7 +24,7 @@ SearchBar.setUp($search, $suggestions, majors);
 
 //If we click the next button, move to next screen
 $(".nxt-btn").click(function(event) {
-  window.location.href = "/courses/" + $("#search-major").val();
+  window.location.href = "/courses";// + $("#search-major").val();
 });
 
 

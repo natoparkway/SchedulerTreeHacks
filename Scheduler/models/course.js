@@ -12,7 +12,7 @@ var courseSchema = mongoose.Schema({
 });
 
 //Make Model
-var Course = mongoose.model('Course', courseSchema);
+var Course = mongoose.model('eci.models.course', courseSchema);	//Look for collection named 'course'
 
 //Export Model
 module.exports = Course;

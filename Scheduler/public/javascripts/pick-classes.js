@@ -1,12 +1,12 @@
 (function(window, document, undefined) {
 
 	var classes = [
-		'CS106A',
-		'CS106B',
-		'CS107',
-		'CS109',
-		'CS110',
-		'CS124'
+		'CS 106A',
+		'CS 106B',
+		'CS 107',
+		'CS 109',
+		'CS 110',
+		'CS 124'
 	];
 
 	var courses = [];
@@ -43,6 +43,36 @@
 			}
 		}
 	});
+
+//If we click the next button, move to next screen
+	$(".nxt-btn").click(function(event) {
+	  courses = processCoursesAndSend(courses);
+	  window.localStorage.setItem('courses', JSON.stringify(courses));
+	  window.location.href = '/schedule';
+	});
+
+	function processCoursesAndSend(courses) {
+		courseObjects = [];
+		var index = 0;
+		courses.forEach(function(elem) {
+			// var index = elem.indexOf(" ");
+			// var subject = elem.substring(0, index);
+			// var code = elem.substring(index + 1);
+			var courseData;
+
+			console.log("Hey");
+			$.get("/data/classes/" + elem, function(response) {
+				console.log("asdf");
+				console.log(response);
+				courseData = response;
+			});
+
+			courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
+			courseObjects.push(courseObject);
+		});
+
+		return courseObjects;
+	}
 
 	//Creates an icon for a given course. Passed as callback to searchBar.setup
 	function createIcon(course, courses_array) {

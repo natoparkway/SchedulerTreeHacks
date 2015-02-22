@@ -54,22 +54,18 @@
 			var equalityIndex = items[index].indexOf("=");
 			var thisKey = items[index].substr(0, equalityIndex);
 			var thisVal = items[index].substr(equalityIndex+1);
-			console.log(thisKey);
 			if (thisKey === key) result = decodeURIComponent(thisVal);
 		}
-		console.log(result);
 		return result;
 	}
 
 	function renderFromJSON(json) {
 		var courseChoices = JSON.parse(json);
-		console.log(courseChoices);
 		courseChoices.forEach(function(course) {
 			renderAndPlaceCourse(course);
 		});
 	}	
 	function renderFromUrl() {
-		console.log("Rendering...");
 		var encodedCourses = parseFromUrl("courses");
 
 		// Demo fallback if the URL has no courses encoded
@@ -130,7 +126,8 @@
 	$(function () {
 		$('[data-toggle="popover"]').popover({
 		  	placement: 'right',
-		  	html: true
+		  	html: true,
+		  	trigger: "manual"
 		});
 
 		$( ".connectedSortable" ).sortable({
@@ -141,6 +138,20 @@
 				setQuarter($(ui.item), quarter);
 			}
 		}).disableSelection();
+	});
+
+	$("body").click(function(event) {
+
+		var $target = $(event.target);
+		if ($target.attr("data-toggle")==="popover") {
+			$target.popover('show');
+		} else if ($target.hasClass("glyphicon-zoom-in")) {
+			var $popover = $target.parent();
+			$popover.popover('show');
+		} else {
+			$('[data-toggle="popover"]').popover('hide');
+		}
+		console.log("Clicked");
 	});
 
 $( "#autumn, #winter" ).sortable({
