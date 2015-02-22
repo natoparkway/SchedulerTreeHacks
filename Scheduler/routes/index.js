@@ -46,6 +46,29 @@ router.get('/data/major_info', function(req, res) {
 	res.json(req.session.major);
 });
 
+router.get('/data/classes/:course', function(req, res){
+	/* Gets the subject and code of the course */
+	console.log(req.params.course);
+	var index = req.params.course.indexOf(" ");
+	var subject = req.params.course.substring(0, index);
+	var code = req.params.course.substring(index + 1);
+
+	var result;
+	var query = Entry.where({'subject': subject, 'code': code});
+
+	query.findOne(function(error, myclass){
+		if(error) throw error;
+
+		/* If the class exists */
+		if(myclass){
+			result = myclass;
+		}
+	});
+
+	console.log(result);
+	res.end();
+});
+
 
 
 module.exports = router;
