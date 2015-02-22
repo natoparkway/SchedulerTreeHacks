@@ -5,28 +5,24 @@ var test = [
 	{ 
 		title: "CS 106A",
 		quarter: false,
-		databaseId:"1"
+		databaseId: 1
 	}, {
 		title: "CS 106B",
 		quarter: "winter1",
-		databaseId:"2"
+		databaseId: 2
 	}, {
 		title: "MATH 52",
 		quarter: false,
-		databaseId:"3"
+		databaseId: 3
 	}];
 
-// router.post('/data/schedule', function(req, res){
-// 	res.send('Received post request');
-// 	test = req.body.schedule;
-// });
+router.post('/data/schedule', function(req, res){
+	res.send('Received post request');
+	test = req.body.schedule;
+});
 
-router.get('/data/schedule/:data', function(req, res) {
+router.get('/data/schedule/', function(req, res) {
 	res.send({data:test});
-	// var data = req.params.data;
-
-	// res.send({data: decodeddata});
-
 });
 
 /* GET home page. */

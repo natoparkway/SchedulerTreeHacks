@@ -100,10 +100,6 @@
 	else
 		renderFromLocalStorage();
 
-	// window.localStorage.setItem('derp', 3);
-	console.log(window.localStorage.getItem('derpa'));
-
-
 	function matchId(element, index, array) {
 		return (selectedId === element.databaseId);
 	}
@@ -112,19 +108,11 @@
 		var selectedId = $course.attr("id"); // eg course97
 		var databaseId = selectedId.substr(6); // eg 97
 		var idArray = courses.map(function(x) {return x.databaseId});
-		
-		console.log(parseInt(databaseId));
-		console.log(idArray);
-		console.log("This should not result in -1:");
-		console.log(idArray.indexOf(databaseId));
-
 		return idArray.indexOf(databaseId);
 	}
 
 	function setQuarter($course, quarter) {
 		var index = getCourseIndex($course);
-
-		console.log("index: "+ index);
 		if (index !== -1)
 			courses[index].quarter = quarter;
 	}
