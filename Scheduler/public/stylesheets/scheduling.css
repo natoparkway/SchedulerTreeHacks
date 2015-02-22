@@ -20,3 +20,10 @@
 #unscheduled-bucket {
 	padding-bottom: 15px;
 }
+
+.remove {
+	float: right;
+	font-weight: bold;
+	text-decoration: none;
+	color: #444;
+}

@@ -1,21 +1,29 @@
 (function(window, document, undefined) {
 	var SCHEDULE_DATA_URL = '/data/schedule';
 	var STATUS_OK = 200;
-	var schedule = {};
+	var courses = [];
 
 	var courseTemplate = document.getElementById('draggable-class-template');
 	var renderCourse = Handlebars.compile(courseTemplate.innerHTML);
 
 
 	var renderPost = function(course) {
+		courses.add(course);
 		var courseHTML = renderCourse(course);
 		var $course = $(courseHTML);
 		if (!course.quarter) {
-			$('#unscheduled-bucket').append(course);
+			$('#unscheduled-bucket').append($course);
 		} else {
 			var divId = '#' + course.quarter;
 			$(divId).append($course);
 		}
+		$('.remove').click(function(event){
+			event.preventDefault();
+			console.log("clikc");
+			var $course = $(this).parent();
+			$course.remove();
+			$('#unscheduled-bucket').append($course);
+		});
 	}
 
 	var loadAll = function(callback) {
@@ -31,16 +39,16 @@
 		request.open('GET', SCHEDULE_DATA_URL, true);
 		request.send();
 	}
+
 	loadAll(function(error, courseSchedule) {
 		if (error) {
 			throw error;
 		} else {
 			courseSchedule.data.forEach(function(course) {
 				renderPost(course);
-			})
+			});
 		}
 	});
-
 
 	$(function () {
 		$('[data-toggle="popover"]').popover({
@@ -62,7 +70,5 @@
 $( "#autumn, #winter" ).sortable({
 	connectWith: ".connectedSortable"
 }).disableSelection();
-
-})(this, this.document);
 
 })(this, this.document);
