@@ -63,7 +63,7 @@
 
 	function renderFromJSON(json) {
 		var courseChoices = JSON.parse(json);
-		courseChoices.data.forEach(function(course) {
+		courseChoices.forEach(function(course) {
 			renderAndPlaceCourse(course);
 		});
 	}	
