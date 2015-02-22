@@ -1,8 +1,5 @@
 (function(window, document, undefined) {
 
-var result = DBQuery.getClass("CS", "106A");
-console.log(result);
-
 var majors = [
 'Computer Science',
 'HumBio',

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Entry = require('../models/course.js');
 
 var test = [
 	{ 
@@ -48,7 +49,6 @@ router.get('/data/major_info', function(req, res) {
 
 router.get('/data/classes/:course', function(req, res){
 	/* Gets the subject and code of the course */
-	console.log(req.params.course);
 	var index = req.params.course.indexOf(" ");
 	var subject = req.params.course.substring(0, index);
 	var code = req.params.course.substring(index + 1);
@@ -58,15 +58,15 @@ router.get('/data/classes/:course', function(req, res){
 
 	query.findOne(function(error, myclass){
 		if(error) throw error;
-
+		
+		console.log(myclass);
 		/* If the class exists */
 		if(myclass){
 			result = myclass;
+
 		}
 	});
-
-	console.log(result);
-	res.end();
+	res.send({courseData: result});
 });
 
 
