@@ -130,7 +130,8 @@
 	$(function () {
 		$('[data-toggle="popover"]').popover({
 		  	placement: 'right',
-		  	html: true
+		  	html: true,
+		  	trigger: "manual"
 		});
 
 		$( ".connectedSortable" ).sortable({
@@ -141,6 +142,20 @@
 				setQuarter($(ui.item), quarter);
 			}
 		}).disableSelection();
+	});
+
+	$("body").click(function(event) {
+
+		var $target = $(event.target);
+		if ($target.attr("data-toggle")==="popover") {
+			$target.popover('show');
+		} else if ($target.hasClass("glyphicon-zoom-in")) {
+			var $popover = $target.parent();
+			$popover.popover('show');
+		} else {
+			$('[data-toggle="popover"]').popover('hide');
+		}
+		console.log("Clicked");
 	});
 
 $( "#autumn, #winter" ).sortable({
