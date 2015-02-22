@@ -1,0 +1,22 @@
+#quarters-table {
+	/* background-color: #9FCF9F; */
+}
+.connectedSortable {
+	min-height: 100px;
+}
+.fill {
+	width: 100%;
+	height: 100%
+}
+#quarters-table th {
+	text-align: center;
+}
+
+.bucket-header {
+	text-align: center;
+	padding: 15px 0px 15px 0px;
+}
+
+#unscheduled-bucket {
+	padding-bottom: 15px;
+}
