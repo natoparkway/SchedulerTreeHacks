@@ -1,5 +1,8 @@
 (function(window, document, undefined) {
 
+	var reqTemplate = document.getElementById('requirements-template');
+	var renderRequirements = Handlebars.compile(reqTemplate.innerHTML);
+
 	var classes = [
 		'CS 106A',
 		'CS 106B',
@@ -86,6 +89,11 @@
 		courses_array.push(course);
 	}
 
-
+	$.getJSON("../../data/MajorReqs.json", function(json){
+		console.log(json);
+		var requirementsHTML = renderRequirements(json);
+		var $requirements = $(requirementsHTML);
+		$('#requirements-wrapper').append($requirements);
+	});
 
   })(this, this.document);
