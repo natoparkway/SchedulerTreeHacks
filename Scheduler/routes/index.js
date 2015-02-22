@@ -5,12 +5,11 @@ var test = [];
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	req.session.major = "Computer Science";
   res.render('index', { title: 'Page1' });
 });
 
-router.get('/courses', function(req, res) {
-	res.render('sample', {title: 'Page2', major: req.session.major});
+router.get('/courses/:major', function(req, res) {
+	res.render('sample', {title: 'Page2', major: req.params.major});
 });
 
 router.get('/schedule', function(req, res) {
@@ -24,3 +23,9 @@ router.get('/data/major_info', function(req, res) {
 
 
 module.exports = router;
+
+
+//HOW TO REDIRECT
+// router.post('/major', function(req, res) {
+// 	res.redirect("/courses/" + req.body.major);
+// });
