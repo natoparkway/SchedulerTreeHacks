@@ -13,7 +13,7 @@
 	  $search.bind('keyup', function(event) {
 	  	if(event.keyCode === ENTER_KEY_CODE) {
 	  		event.preventDefault();
-        if(callback) {
+        if(callback && $search.val() !== '') {
           callback($search.val(), courses);
           $search.html('');
         }

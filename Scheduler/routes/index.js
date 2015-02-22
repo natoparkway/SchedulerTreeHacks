@@ -11,7 +11,7 @@ var test = [
 		quarter: "winter1",
 		databaseId:"2"
 	}, {
-		title: "MATH 51",
+		title: "MATH 52",
 		quarter: false,
 		databaseId:"3"
 	}];
@@ -21,8 +21,12 @@ var test = [
 // 	test = req.body.schedule;
 // });
 
-router.get('/data/schedule', function(req, res) {
+router.get('/data/schedule/:data', function(req, res) {
 	res.send({data:test});
+	// var data = req.params.data;
+
+	// res.send({data: decodeddata});
+
 });
 
 /* GET home page. */

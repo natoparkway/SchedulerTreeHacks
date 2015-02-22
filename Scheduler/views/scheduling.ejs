@@ -4,7 +4,7 @@
 
 <div id = "unscheduled-bucket" class = "col-md-2 connectedSortable panel">
 	<div class="drag-disabled bucket-header">Unused classes</div>
-	<div class="list-group-item">CS 107</div>
+	<!--<div class="list-group-item">CS 107</div> -->
 </div>
 
 <div class = "col-md-8">
@@ -18,20 +18,12 @@
 		<tr>
 			<td>Freshman</td>
 			<td id = "autumn1" class = "connectedSortable">
-				<div class="list-group-item">CS 107
-				</div>
-				<div class="list-group-item">CS 107</div>
 			</td>
 			<td id = "winter1" class = "connectedSortable">
-				<div class="list-group-item">CS 107</div>
-				<div class="list-group-item">CS 107</div>
-				<div class="list-group-item">CS 107</div>
-				<div class="list-group-item">CS 107</div>
 			</td>
 			<td id = "spring1" class = "connectedSortable">
 			</td>
 			<td id = "summer1" class = "connectedSortable">
-				<div class="list-group-item">CS 107</div>
 			</td>
 		</tr>
 		<tr>
@@ -83,8 +75,10 @@
 
 <script src="/javascripts/js/handlebars-v2.0.0.js"></script>
 <script type="text/x-handlebars-template" id="draggable-class-template">
-	{{ classname }}
-	<a href="#" class="remove">&#215;</a>
+	<div id="course{{databaseId}}" class="list-group-item">
+		{{ title }}
+		<a href="#" class="remove">&#215;</a> 
+	</div>
 </script>
 
 <!-- <button type="button" class="btn btn-lg fill" data-toggle="popover" title="Popover title" data-content="<a href = 'www.google.com'> What a class </a>- take it with Keith!">CS 103</button> -->
