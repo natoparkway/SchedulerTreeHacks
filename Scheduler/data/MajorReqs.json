@@ -1,89 +1,110 @@
-{
+{"requirements": [{
 	"requirementName": "Math Requirement 1",
+	"requirementId" : 0,
 	"classes": ["Math 41"]
-}
+},
 {
 	"requirementName": "Math Requirement 2",
+	"requirementId" : 1,
 	"classes":["Math 42"]
-}
+},
 {
 	"requirementName": "Math Elective 1",
+	"requirementId" : 2,
 	"classes": ["Math 51","Math 52","Math 53","Math 104","Math 108","Math 109","Math 110","Math 113","CS 157","CS 205A","PHIL 151","CME 100","CME 102","CME 104","PHIL 151"]
-}
+},
 {
 	"requirementName": "Math Elective 2",
+	"requirementId" : 3,
 	"classes": ["Math 51","Math 52","Math 53","Math 104","Math 108","Math 109","Math 110","Math 113","CS 157","CS 205A","PHIL 151","CME 100","CME 102","CME 104","PHIL 151"]
-}
+},
 {
 	"requirementName": "Math  Requirement 3",
+	"requirementId" : 4,
 	"classes": ["CS 103"]
-}
+},
 {
 	"requirementName": "Math  Requirement 4",
+	"requirementId" : 5,
 	"classes": ["CS 109"]
-}
-
+},
 {
 	"requirementName": "Science Requirement 1",
+	"requirementId" : 6,
 	"classes": ["PHYSICS 21","PHYSICS 41","PHYSICS 61"]
-}
+},
 {
 	"requirementName": "Science Requirement 2",
+	"requirementId" : 7,
 	"classes": ["PHYSICS 23","PHYSICS 43","PHYSICS 63"]
-}
+},
 {
 	"requirementName": "Science Elective",
+	"requirementId" : 8,
 	"classes": ["BIO 41","BIO 42","BIO 43","BIO 44X","BIO 44Y","CEE  63","CEE  64","CEE  70","CHEM 31A","CHEM 31B","CHEM 31X","CHEM 33","CHEM 35","CHEM 36","CHEM 131","CHEM 135","EARTHSYS 10","EARTHSYS 30","ENGR  31","GES 1A","GES 1B","GES 1C","PHYSICS 25","PHYSICS 45","PHYSICS 65"]
-}
+},
 {
 	"requirementName": "Technology in Society",
+	"requirementId" : 9,
 	"classes": ["BIO E131","CLASSICS 151","COMM 120W","CS 181","CS 181W","ECON 116","ENGR  130","ENGR  131","ENGR  145","MS&E 181","MS&E 197","STS 1"]
-}
+},
 {
-	"requirementName": "Enginee ring Fundementals 1",
+	"requirementName": "Engineering Fundamentals 1",
+	"requirementId" : 10,
 	"classes": ["CS 106B", "CS 106X"]
-}
+},
 {
-	"requirementName": "Enginee ring Fundementals 2",
+	"requirementName": "Engineering Fundamentals 2",
+	"requirementId" : 11,
 	"classes": ["ENGR 40", "ENGR 40A", "ENGR 40M"]
-}
+},
 {
-	"requirementName": "Enginee ring Fundementals Elective",
+	"requirementName": "Engineering Fundamentals Elective",
+	"requirementId" : 12,
 	"classes": ["ENGR 10","ENGR 14","ENGR 14S","ENGR 15","ENGR 20","ENGR 25B","ENGR 25E","ENGR 30","ENGR 40","ENGR 50","ENGR 50E","ENGR 50M","ENGR 60","ENGR 62","ENGR 70A","ENGR 70B","ENGR 70X","ENGR 80","ENGR 102E","ENGR 102M","ENGR 120","ENGR 205","ENGR 206","ENGR 207A","ENGR 207B","ENGR 207C","ENGR 209A"]
-}
+},
 {
 	"requirementName": "Writing in the Major",
+	"requirementId" : 13,
 	"classes": ["CS 181W", "CS 191W", "CS 194W", "CS 210B", "CS 294W"]
-}
+},
 {
 	"requirementName": "Core 1",
+	"requirementId" : 14,
 	"classes": ["CS 107"]
-}
+},
 {
 	"requirementName": "Core 2",
+	"requirementId" : 15,
 	"classes": ["CS 110"]
-}
+},
 {
 	"requirementName": "Core 3",
+	"requirementId" : 16,
 	"classes": ["CS 161"]
-}
+},
 {
 	"requirementName": "Track 1",
+	"requirementId" : 17,
 	"classes": ["CS 124"]
-}
+},
 {
 	"requirementName": "Track 2",
+	"requirementId" : 18,
 	"classes": ["CS 145"]
-}
+},
 {
 	"requirementName": "Track 3",
+	"requirementId" : 19,
 	"classes": ["CS 205A", "CME 104", "CME 108", "Math 52", "Math 113"]
-}
+},
 {
 	"requirementName": "Track 4",
+	"requirementId" : 20,
 	"classes": ["CS  164", "CS 178", "CS 205B", "CS 131A", "CS 231A", "CS 268", "CS 348A", "CS 348B", "CS 448"]
-}
+},
 {
 	"requirementName": "Track Elective",
+	"requirementId" : 21,
 	"classes":["ARTSTUDI 160","ARTSTUDI 170","ARTSTUDI 179","CME 302","CME 306","EE 262","EE 264","EE 278","EE 368","ME 101","PSYCH 30","PSYCH 221","CS 108","CS 121","CS 124","CS 131","CS 140","CS 142","CS 143","CS 144","CS 145","CS 147","CS 148","CS 149","CS 154","CS 155","CS 156","CS 157","CS 164","CS 166","CS 167","CS 205A","CS 205B","CS 210A","CS 222","CS 223A","CS 224M","CS 224N","CS 224S","CS 224U","CS 224W","CS 225A","CS 225B","CS 226","CS 227","CS 227B","CS 228","CS 228T","CS 229","CS 229A","CS 229T","CS 231A","CS 240","CS 240H","CS 241","CS 242","CS 243","CS 244","CS 245","CS 246","CS 247","CS 248","CS 249A","CS 249B","CS 254","CS 255","CS 258","CS 261","CS 262","CS 263","CS 265","CS 267","CS 270","CS 271","CS 272","CS 173","CS 274","CS 276","CS 277","CS 295","CME 108","EE 108B","EE 282","CS 279","EE 180","EE 364A","CS 348B","CS 168","CS 190","CS 264","CS 266"]
-}
+}]}
