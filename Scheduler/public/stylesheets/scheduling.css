@@ -27,3 +27,7 @@
 	text-decoration: none;
 	color: #444;
 }
+
+#unscheduled-bucket div .remove {
+	font-size: 0px;
+}
