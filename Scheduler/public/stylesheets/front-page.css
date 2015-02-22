@@ -1,0 +1,27 @@
+#main-title {
+	font-size: 60px;
+  font-family: "Open Sans";
+  font-style: italic;
+  color: #B81D18;
+}
+
+.nxt-btn {
+	position: absolute;
+	bottom: 30px;
+	width: 15%;
+	color: #74AFAD;
+	background-color: #D93B37;
+}
+
+#suggestions {
+	list-style-type: none;
+}
+
+#choose-major ul {
+  max-height: 380px;
+  overflow: auto;
+}
+
+#suggestions .selected {
+	background-color: #2A7572;
+}
