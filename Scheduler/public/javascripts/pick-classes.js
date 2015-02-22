@@ -1,56 +1,61 @@
 (function(window, document, undefined) {
 
-var classes = [
-	'CS106A',
-	'CS106B',
-	'CS107',
-	'CS109',
-	'CS110',
-	'CS124'
-];
+	var classes = [
+		'CS106A',
+		'CS106B',
+		'CS107',
+		'CS109',
+		'CS110',
+		'CS124'
+	];
 
-var $search = $("#search-class");
+	var courses = [];
 
-// create unordered list to hold suggestions
-var $suggestions = $('<ul></ul>').attr('id', 'suggestions').attr('class', 'list-group');	//id="suggestions"
-$search.after($suggestions);	//Insert $suggestions after $search
+	var $search = $("#search-class");
 
-SearchBar.setUp($search, $suggestions, classes, createIcon);
+	// create unordered list to hold suggestions
+	var $suggestions = $('<ul></ul>').attr('id', 'suggestions').attr('class', 'list-group');	//id="suggestions"
+	$search.after($suggestions);	//Insert $suggestions after $search
 
-$modal = $("#class-up-close");
+	SearchBar.setUp($search, $suggestions, classes, createIcon, courses);
 
-$("body").click(function(event) {
-	if(event.target.type === 'button') {
-		if(event.target.className.indexOf('course') !== -1) {
-			$('#class-up-close .modal-title').text(event.target.innerHTML);
-			return;
+	$modal = $("#class-up-close");
+
+	$("body").click(function(event) {
+		if(event.target.type === 'button') {
+			if(event.target.className.indexOf('course') !== -1) {
+				$('#class-up-close .modal-title').text(event.target.innerHTML);
+				return;
+			}
+			
+			//If the user clicks 'Delete Course' button
+			if(event.target.innerHTML === 'Delete Course') {
+				var courseName = $('.modal-title').text();
+				$('.course').each(function(index) {
+					if($(this).text() === courseName) {
+						$(this).remove();
+						var index = courses.indexOf(courseName);
+						courses.splice(index, 1);
+
+						return;
+					}
+				});
+			}
 		}
-		
-		//If the user clicks 'Delete Course' button
-		if(event.target.innerHTML === 'Delete Course') {
-			var courseName = $('.modal-title').text();
-			$('.course').each(function(index) {
-				if($(this).text() === courseName) {
-					$(this).remove();
+	});
 
-					return;
-				}
-			});
-		}
+	//Creates an icon for a given course. Passed as callback to searchBar.setup
+	function createIcon(course, courses_array) {
+		$searchBarArea = $("#enter-class-bar");
+		var $newClass = $('<button></button>')
+			.attr('type', 'button')
+			.attr('data-toggle', 'modal')
+			.attr('data-target', '#class-up-close')
+			.attr('class', 'btn btn-lg course')
+			.text(course);
+		$searchBarArea.after($newClass);
+		courses_array.push(course);
 	}
-});
-
-
-function createIcon(course) {
-	$searchBarArea = $("#enter-class-bar");
-	var $newClass = $('<button></button>')
-		.attr('type', 'button')
-		.attr('data-toggle', 'modal')
-		.attr('data-target', '#class-up-close')
-		.attr('class', 'btn btn-lg course')
-		.text(course);
-	$searchBarArea.after($newClass);
-}
 
 
 

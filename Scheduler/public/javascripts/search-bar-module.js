@@ -6,7 +6,7 @@
   var DOWN_ARROW_KEY_CODE = 40;
   var UP_ARROW_KEY_CODE = 38;
 
-	SearchBar.setUp = function($search, $suggestions, list, callback) {
+	SearchBar.setUp = function($search, $suggestions, list, callback, courses) {
 		var previousTerm = '';
 
 		//Add key listeners
@@ -14,7 +14,7 @@
 	  	if(event.keyCode === ENTER_KEY_CODE) {
 	  		event.preventDefault();
         if(callback) {
-          callback($search.val());
+          callback($search.val(), courses);
           $search.html('');
         }
 	  		return;
@@ -44,7 +44,7 @@
 	    $search.val(event.target.innerHTML);
 	    $suggestions.html('');
       if(callback) {
-        callback($search.val());
+        callback($search.val(), courses);
         $search.val('');
         return;
       }
