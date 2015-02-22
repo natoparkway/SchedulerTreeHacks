@@ -1,7 +1,29 @@
 var express = require('express');
 var router = express.Router();
 
-var test = [];
+var test = [
+	{ 
+		title: "CS 106A",
+		quarter: false,
+		databaseId:"1"
+	}, {
+		title: "CS 106B",
+		quarter: "winter1",
+		databaseId:"2"
+	}, {
+		title: "MATH 51",
+		quarter: false,
+		databaseId:"3"
+	}];
+
+router.post('/data/schedule', function(req, res){
+	res.send('Received post request');
+	test = req.body.schedule;
+});
+
+router.get('/data/schedule', function(req, res) {
+	res.send({data:test});
+});
 
 /* GET home page. */
 router.get('/', function(req, res) {

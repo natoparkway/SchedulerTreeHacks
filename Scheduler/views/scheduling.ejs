@@ -2,41 +2,95 @@
     <h1>Scheduling</h1>
 </header>
 
-<div>
-	<ul id="unsorted" class="connectedSortable">
-		<li>CS 107</li>
-		<li>CS 229</li>
-		<li>PSYCH 1</li>
-	</ul>
+<div id = "unscheduled-bucket" class = "col-md-2 connectedSortable panel">
+	<div class="drag-disabled bucket-header">Unused classes</div>
+	<div class="list-group-item">CS 107</div>
 </div>
 
-<div>
-	<table class="table">
+<div class = "col-md-8">
+	<table id = "quarters-table" class="table panel" >
+		<thead>
+			<th class = "col-md-1"> </th>
+			<th class = "col-md-2"> Autumn </th>
+			<th class = "col-md-2"> Winter </th>
+			<th class = "col-md-2"> Spring </th>
+			<th class = "col-md-2"> Summer </th>
 		<tr>
-			<td>
-				<ul id="autumn" class="connectedSortable">
-					<li>
-						<button id="class1" type="button" class="btn btn-lg btn-danger" data-toggle="popover" data-placement="right">CS 103</button>
-					</li>
-				</ul>
+			<td>Freshman</td>
+			<td id = "autumn1" class = "connectedSortable">
+				<div class="list-group-item">CS 107
+				</div>
+				<div class="list-group-item">CS 107</div>
 			</td>
-			<td>
-				<ul id="winter" class="connectedSortable">
-					<li>CS 106A</li>
-					<li>Fun IntroSem</li>
-				</ul>
+			<td id = "winter1" class = "connectedSortable">
+				<div class="list-group-item">CS 107</div>
+				<div class="list-group-item">CS 107</div>
+				<div class="list-group-item">CS 107</div>
+				<div class="list-group-item">CS 107</div>
 			</td>
-			<td>
-				<ul id="spring" class="connectedSortable">
-					<li>BIO 150</li>
-					<li>CS 109</li>
-				</ul>
+			<td id = "spring1" class = "connectedSortable">
+			</td>
+			<td id = "summer1" class = "connectedSortable">
+				<div class="list-group-item">CS 107</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Sophomore</td>
+			<td id = "autumn2" class = "connectedSortable">
+
+			</td>
+			<td id = "winter2" class = "connectedSortable">
+
+			</td>
+			<td id = "spring2" class = "connectedSortable">
+
+			</td>
+			<td id = "summer2" class = "connectedSortable">
+
+			</td>
+		</tr>
+		<tr>
+			<td>Junior</td>
+			<td id = "autumn3" class = "connectedSortable">
+
+			</td>
+			<td id = "winter3" class = "connectedSortable">
+
+			</td>
+			<td id = "spring3" class = "connectedSortable">
+
+			</td>
+			<td id = "summer3" class = "connectedSortable">
+
+			</td>
+		</tr>
+		<tr>
+			<td>Senior</td>
+			<td id = "autumn4" class = "connectedSortable">
+
+			</td>
+			<td id = "winter4" class = "connectedSortable">
+
+			</td>
+			<td id = "spring4" class = "connectedSortable">
+
+			</td>
+			<td id = "summer4" class = "connectedSortable">
 			</td>
 		</tr>
 	</table>
 </div>
 
+<script src="/javascripts/js/handlebars-v2.0.0.js"></script>
+<script type="text/x-handlebars-template" id="draggable-class-template">
+	{{ classname }}
+	<a href="#" class="remove">&#215;</a>
+</script>
+
+<!-- <button type="button" class="btn btn-lg fill" data-toggle="popover" title="Popover title" data-content="<a href = 'www.google.com'> What a class </a>- take it with Keith!">CS 103</button> -->
+
 <!-- Libraries -->
+<link rel="stylesheet" href="/stylesheets/scheduling.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
 <script type="text/javascript" src="/javascripts/js/bootstrap.js"></script> 
 <script type="text/javascript" src="/javascripts/js/jquery-ui.js"></script> 
