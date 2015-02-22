@@ -26,7 +26,6 @@
 		$('.remove').click(function(event){
 			event.preventDefault();
 			var $course = $(this).parent();
-			$course.remove();
 
 			setQuarter($course, false);
 
