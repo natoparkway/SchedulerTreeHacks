@@ -16,10 +16,10 @@ var test = [
 		databaseId:"3"
 	}];
 
-router.post('/data/schedule', function(req, res){
-	res.send('Received post request');
-	test = req.body.schedule;
-});
+// router.post('/data/schedule', function(req, res){
+// 	res.send('Received post request');
+// 	test = req.body.schedule;
+// });
 
 router.get('/data/schedule', function(req, res) {
 	res.send({data:test});

@@ -64,5 +64,3 @@ $( "#autumn, #winter" ).sortable({
 }).disableSelection();
 
 })(this, this.document);
-
-})(this, this.document);
