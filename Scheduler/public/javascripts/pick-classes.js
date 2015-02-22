@@ -12,6 +12,8 @@
 		'CS 124'
 	];
 
+	$.get()
+
 	var courses = [];
 
 	var $search = $("#search-class");
@@ -97,8 +99,11 @@
 			var $requirement = $(requirementHTML);
 			$('#requirements-wrapper').append($requirement);
 		});
+	});
 
-		
+	$.get("/data/course_names", function(json) {
+		classes = JSON.parse(json);
+		console.log(classes);
 	});
 
   })(this, this.document);
