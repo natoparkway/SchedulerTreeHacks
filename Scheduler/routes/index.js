@@ -17,6 +17,8 @@ var test = [
 		databaseId:3
 	}];
 
+var temp;
+
 // router.post('/data/schedule', function(req, res){
 // 	res.send('Received post request');
 // 	test = req.body.schedule;
@@ -61,13 +63,11 @@ router.get('/data/classes/:course', function(req, res){
 	
 		/* If the class exists */
 		if(myclass) {
-			//result = myclass;
+			res.write({data: myclass});
 			return;
 		}
 	});
-
-	//console.log(result);
-	//res.send({data: result});
+	res.end();
 });
 
 
