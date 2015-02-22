@@ -44,6 +44,24 @@
 		}
 	});
 
+//If we click the next button, move to next screen
+	$(".nxt-btn").click(function(event) {
+	  courses = processCoursesAndSend(courses);
+	  window.localStorage.setItem('courses', JSON.stringify(courses));
+	  window.location.href = '/schedule';
+	});
+
+	function processCoursesAndSend(courses) {
+		courseObjects = [];
+		var index = 0;
+		courses.forEach(function(elem) {
+			courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
+			courseObjects.push(courseObject);
+		});
+
+		return courseObjects;
+	}
+
 	//Creates an icon for a given course. Passed as callback to searchBar.setup
 	function createIcon(course, courses_array) {
 		$searchBarArea = $("#enter-class-bar");
