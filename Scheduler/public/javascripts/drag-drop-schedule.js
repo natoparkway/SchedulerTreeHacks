@@ -151,8 +151,9 @@
 			var $popover = $target.parent();
 			$popover.popover('show');
 
-		} else if (!$target.attr('id') === "plan-btn") {
+		} else if ($target.attr('id') !== "plan-btn") {
 			$('[data-toggle="popover"]').popover('hide');
+			console.log('clicked');
 
 		} else {
 			//PIPE TO KENNY'S FUNCTION
