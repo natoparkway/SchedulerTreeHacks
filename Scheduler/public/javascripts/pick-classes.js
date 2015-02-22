@@ -1,12 +1,12 @@
 (function(window, document, undefined) {
 
 	var classes = [
-		'CS106A',
-		'CS106B',
-		'CS107',
-		'CS109',
-		'CS110',
-		'CS124'
+		'CS 106A',
+		'CS 106B',
+		'CS 107',
+		'CS 109',
+		'CS 110',
+		'CS 124'
 	];
 
 	var courses = [];
@@ -55,6 +55,17 @@
 		courseObjects = [];
 		var index = 0;
 		courses.forEach(function(elem) {
+			// var index = elem.indexOf(" ");
+			// var subject = elem.substring(0, index);
+			// var code = elem.substring(index + 1);
+			var courseData;
+
+			$.get("/data/classes/" + elem, function(response) {
+				console.log("asdf");
+				console.log(response);
+				courseData = response;
+			});
+
 			courseObject = {"titleCode": elem, "quarter": false, "databaseId": index++};
 			courseObjects.push(courseObject);
 		});
