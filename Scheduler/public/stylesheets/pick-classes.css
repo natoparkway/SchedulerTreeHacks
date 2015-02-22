@@ -1,3 +1,11 @@
 .course {
 	margin-right: 10px;
 }
+
+#requirements-wrapper {
+	max-height: 500px
+}
+
+.fixed-width-button {
+	width: 200px;
+}

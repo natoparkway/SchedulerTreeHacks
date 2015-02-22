@@ -90,11 +90,17 @@
 		courses_array.push(course);
 	}
 
-	$.getJSON("../../data/MajorReqs.json", function(json){
-		console.log(json);
-		var requirementsHTML = renderRequirements(json);
-		var $requirements = $(requirementsHTML);
-		$('#requirements-wrapper').append($requirements);
+	$.get("/data/requirements", function(json) {
+		console.log("Recved: " + json);
+
+		var requirements = JSON.parse(json);
+		requirements.requirements.forEach(function(requirement){
+			var requirementHTML = renderRequirements(requirement);
+			var $requirement = $(requirementHTML);
+			$('#requirements-wrapper').append($requirement);
+		});
+
+		
 	});
 
   })(this, this.document);
