@@ -6,13 +6,17 @@
   var DOWN_ARROW_KEY_CODE = 40;
   var UP_ARROW_KEY_CODE = 38;
 
-	SearchBar.setUp = function($search, $suggestions, list) {
+	SearchBar.setUp = function($search, $suggestions, list, callback) {
 		var previousTerm = '';
 
 		//Add key listeners
 	  $search.bind('keyup', function(event) {
 	  	if(event.keyCode === ENTER_KEY_CODE) {
 	  		event.preventDefault();
+        if(callback) {
+          callback($search.val());
+          $search.html('');
+        }
 	  		return;
 	  	}
 
@@ -39,6 +43,11 @@
 	  $suggestions.click(function(event) {
 	    $search.val(event.target.innerHTML);
 	    $suggestions.html('');
+      if(callback) {
+        callback($search.val());
+        $search.val('');
+        return;
+      }
 	  });
 
 	  $search.bind('keydown', function(event) {

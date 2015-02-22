@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/courses/:major', function(req, res) {
-	res.render('old-classes-input', {title: 'Page2', major: req.params.major});
+	res.render('pick-classes-view', {title: 'Page2', major: req.params.major});
 });
 
 router.get('/schedule', function(req, res) {
