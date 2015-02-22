@@ -3,15 +3,15 @@ var router = express.Router();
 
 var test = [
 	{ 
-		title: "CS 106A",
+		titleCode: "CS 106A",
 		quarter: false,
 		databaseId: 1
 	}, {
-		title: "CS 106B",
+		titleCode: "CS 106B",
 		quarter: "winter1",
 		databaseId:2
 	}, {
-		title: "MATH 52",
+		titleCode: "MATH 52",
 		quarter: false,
 		databaseId:3
 	}];

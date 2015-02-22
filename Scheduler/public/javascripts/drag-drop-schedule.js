@@ -93,11 +93,16 @@
 		renderFromJSON(coursesJSON);
 	}
 
+	// console.log("Localstorage: " + window.localStorage.getItem('courses'));
+	// window.localStorage.setItem('courses', 1);
 
-	if (window.localStorage.getItem('courses') === null)
+	if (window.localStorage.getItem('courses') === "1") {
 		renderFromUrl();
-	else
+	}
+	else {
 		renderFromLocalStorage();
+	}
+
 
 	function matchId(element, index, array) {
 		return (selectedId === element.databaseId);
@@ -105,15 +110,20 @@
 
 	function getCourseIndex($course) {
 		var selectedId = $course.attr("id"); // eg course97
-		var databaseId = selectedId.substr(6); // eg 97
+		var databaseId = parseInt(selectedId.substr(6)); // eg 97
 		var idArray = courses.map(function(x) {return x.databaseId});
 		return idArray.indexOf(databaseId);
 	}
 
 	function setQuarter($course, quarter) {
 		var index = getCourseIndex($course);
+
 		if (index !== -1)
 			courses[index].quarter = quarter;
+
+		var courseJSON = JSON.stringify(courses);
+		window.localStorage.setItem('courses', courseJSON);
+		console.log(window.localStorage.getItem('courses'));
 	}
 
 	$(function () {
@@ -140,7 +150,7 @@ $( "#autumn, #winter" ).sortable({
 
 /*
  * Matt To Do's:
- * Saving to localStorage
+ * Saving to localStorage - done!
  * Integrate with Kenny's algorithm
- * Call from database
+ * Calling from database
  */
