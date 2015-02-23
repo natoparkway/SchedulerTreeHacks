@@ -1,5 +1,14 @@
 (function(window, document, undefined) {
-	var SearchBar = {};
+/* SEARCH BAR MODULE
+ * Given a search bar ($search), a empty unordered list ($suggestions), a list of items
+ * and possible callback, sets up search bar functionality.
+ *
+ * This entails:
+ *    When you type, all possible completions come up as suggestions
+ *    You can click those suggestions or use the arrow keys and hit enter to select it.
+ */
+
+  var SearchBar = {};
 
 	// numeric identifiers for enter, down, and up arrow keys
   var ENTER_KEY_CODE = 13;
@@ -13,9 +22,11 @@
 	  $search.bind('keyup', function(event) {
 	  	if(event.keyCode === ENTER_KEY_CODE) {
 	  		event.preventDefault();
+
+        //We might have specified a call back to occur when there is text in the search bar.
         if(callback && $search.val() !== '') {
           callback($search.val(), courses);
-          $search.val('');
+          $search.val('');  //Empty search bar of text
         }
 	  		return;
 	  	}
@@ -26,6 +37,7 @@
 	  	//Reset suggestions
 	  	$suggestions.html('');
 
+      //If there is a search term, get all the relevant suggestions for it.
 	  	if(searchTerm !== '') {
 	  		list.forEach(function(elem) {
 	  			if (elem.toLowerCase().indexOf(searchTerm) === 0) {
@@ -40,6 +52,9 @@
 	  	previousTerm = searchTerm;
 	  });
 
+    // If you click on any of the suggestions, close the suggestions and put the selected element
+    // in the search bar.
+    // If use has specified a callback, that will be called.
 	  $suggestions.click(function(event) {
 	    $search.val(event.target.innerHTML);
 	    $suggestions.html('');
@@ -50,6 +65,11 @@
       }
 	  });
 
+/* HIGHLIGHTING THE SUGGESTIONS
+ * ----------------------------
+ * Everything below this point deals with highlighting and selecting selections
+ * as the user hits the up and down arrow keys.
+ */
 	  $search.bind('keydown', function(event) {
 	  	if (event.keyCode === DOWN_ARROW_KEY_CODE) {
 	      // down arrow goes to next suggestion

@@ -13745,6 +13745,7 @@
 	'WELLNESS 220'
 	];
 
+	//Holds the courses that the user chose.
 	var courses = [];
 
 	var $search = $("#search-class");
@@ -13755,16 +13756,20 @@
 
 	SearchBar.setUp($search, $suggestions, classes, createIcon, courses);
 
+	//Modal that will be expanded every time you click on a class
 	$modal = $("#class-up-close");
 
 	$("body").click(function(event) {
 		if(event.target.type === 'button') {
+			//If a button is clicked with class name 'course', change the title of the modal
+			//as it's going to pop up
 			if(event.target.className.indexOf('course') !== -1) {
 				$('#class-up-close .modal-title').text(event.target.innerHTML);
 				return;
 			}
 			
-			//If the user clicks 'Delete Course' button
+			//If the user clicks 'Delete Course' button in the modal, delete the course 
+			//from both the screen and the courses array
 			if(event.target.innerHTML === 'Delete Course') {
 				var courseName = $('.modal-title').text();
 				$('.course').each(function(index) {
@@ -13781,7 +13786,7 @@
 
 //If we click the next button, move to next screen
 $(".nxt-btn").click(function(event) {
-	console.log(courseObjects.length);
+	//console.log(courseObjects.length);
 	courses = processCoursesAndSend(courses);
 });
 
@@ -13804,6 +13809,9 @@ function addCourse(course, courses){
 	}
 }
 
+//For all the courses that the user has selected, populate them with revelant database data
+//and then place them in local storage.
+//CURRENTLY NOT POPULATED WITH DATABASE DATA
 function processCoursesAndSend(courses) {
 	courses.forEach(function(elem) {
 		$.get("/data/classes/" + elem, function(response) {
@@ -13826,12 +13834,10 @@ function createIcon(course, courses_array) {
 	courses_array.push(course);
 }
 
-// $('.course').click(function() {
-// 	$('.modal-body p').text("Description");
-// });
-
+//Get requirements with which to populate the track data.
+//Path needs to include the given major
 $.get("/data/requirements", function(json) {
-	// console.log("Received: " + json);
+	console.log("Received: " + json);
 
 	var requirements = JSON.parse(json);
 	requirements.requirements.forEach(function(requirement){
@@ -13841,9 +13847,16 @@ $.get("/data/requirements", function(json) {
 	});
 });
 
-	// $.get("/data/course_names", function(json) {
-	// 	classes = JSON.parse(json);
-	// 	console.log(classes);
-	// });
+//NEED TO DO SOMETHING ABOUT POPULATING THE MODAL WITH COURSE DESCRIPTION
+/*
+$('.course').click(function() {
+	$('.modal-body p').text("Description");
+});
+*/
+
+// $.get("/data/course_names", function(json) {
+// 	classes = JSON.parse(json);
+// 	console.log(classes);
+// });
 
 })(this, this.document);

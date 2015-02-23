@@ -84,13 +84,14 @@ router.get('/data/requirements', function(req, res) {
 // 	res.json(JSON.stringify(courseNames));
 // })
 
+//DATABASE QUERY
 router.get('/data/classes/:course', function(req, res){
 	/* Gets the subject and code of the course */
 	var index = req.params.course.indexOf(" ");
 	var subject = req.params.course.substring(0, index);
 	var code = req.params.course.substring(index + 1);
 
-	console.log("Subject: " + subject);
+	//console.log("Subject: " + subject);
 	var result;
 	var query = Entry.where({'subject': subject, 'code': code});
 
